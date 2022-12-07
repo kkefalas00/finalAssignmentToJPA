@@ -1,15 +1,17 @@
 package com.example.finalassignment.service;
 
-import com.example.finalassignment.model.User;
+import com.example.finalassignment.model.Movie;
 
 import java.util.List;
 
-public interface UserService {
+public interface MovieService {
 
-    User create(User user);
-    User findById(long id);
-    User findByColumn(int column);
-    List<User> findAll();
-    User update( User user);
-    boolean delete(long columnId);
+    Movie create(Movie movie);
+    Movie findById(long id);
+    Movie findByMovieName(String name);
+    List<Movie> findAll();
+    Movie update(Movie movie);
+    boolean delete(long id);
+
+    List<Movie> getTheTop10MoviesByTickets();
 }

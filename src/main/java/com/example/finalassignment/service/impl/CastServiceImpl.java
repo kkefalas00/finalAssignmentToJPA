@@ -1,48 +1,55 @@
 package com.example.finalassignment.service.impl;
-import com.example.finalassignment.model.Ticket;
-import com.example.finalassignment.repository.impl.TicketRepositoryImpl;
-import com.example.finalassignment.repository.impl.UserRepositoryImpl;
-import com.example.finalassignment.service.TicketService;
+import com.example.finalassignment.model.Cast;
+import com.example.finalassignment.repository.impl.CastRepositoryImpl;
+import com.example.finalassignment.repository.impl.MovieRepositoryImpl;
+import com.example.finalassignment.service.CastService;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
-public class TicketServiceImpl implements TicketService{
+public class CastServiceImpl implements CastService{
 
     @Inject
-    private TicketRepositoryImpl ticketRepositoryImpl;
+    private CastRepositoryImpl castRepositoryImpl;
 
     @Inject
-    private UserRepositoryImpl userRepositoryImpl;
+    private MovieRepositoryImpl movieRepositoryImpl;
 
 
     @Override
-    public Ticket create(Ticket ticket) {
-        return ticketRepositoryImpl.create(ticket);
+    public Cast create(Cast cast) {
+        return castRepositoryImpl.create(cast);
     }
 
     @Override
-    public List<Ticket> findAll() {
-        return ticketRepositoryImpl.read();
+    public List<Cast> findAll() {
+        return castRepositoryImpl.read();
     }
 
     @Override
-    public Ticket findByTicketId(Long column1Id) {
-        return ticketRepositoryImpl.read(column1Id);
+    public Cast findByTicketId(Long column1Id) {
+        return castRepositoryImpl.read(column1Id);
     }
 
     @Override
-    public Ticket update(Ticket ticket) {
-        return ticketRepositoryImpl.update(ticket);
+    public Cast update(Cast cast) {
+        return castRepositoryImpl.update(cast);
     }
 
     @Override
     public boolean delete(Long column1Id) {
-        return ticketRepositoryImpl.delete(column1Id);
+        return castRepositoryImpl.delete(column1Id);
     }
 
     @Override
-    public List<Ticket> getTicketsByUserId(Long column1Id) {
-        return ticketRepositoryImpl.getTicketsByUserId(column1Id);
+    public List<Cast> getMoviesByActors(Long id) {
+        return castRepositoryImpl.getMoviesByActors(id);
     }
+
+    @Override
+    public List<Cast> getMoviesByDirectors(Long id) {
+        return castRepositoryImpl.getMoviesByDirectors(id);
+    }
+
+
 }

@@ -1,31 +1,40 @@
 package com.example.finalassignment.repository.impl;
 
-import com.example.finalassignment.model.User;
-import com.example.finalassignment.repository.UserRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.NonUniqueResultException;
-import jakarta.persistence.PersistenceContext;
+import com.example.finalassignment.model.Movie;
+import com.example.finalassignment.repository.MovieRepository;
+import jakarta.persistence.*;
 
-public class UserRepositoryImpl extends RepositoryImpl<User, Long> implements UserRepository {
+import java.util.List;
+
+public class MovieRepositoryImpl extends RepositoryImpl<Movie, Long> implements MovieRepository {
 
     @PersistenceContext(unitName = "Persistence")
     private EntityManager em;
 
     @Override
-    public Class<User> getClassType() {
-        return User.class;
+    public Class<Movie> getClassType() {
+        return Movie.class;
     }
 
     @Override
     public String getClassName() {
-        return User.class.getSimpleName();
+        return Movie.class.getSimpleName();
     }
 
     @Override
 
-    public User getUserByColumn(int column) throws NoResultException, NonUniqueResultException {
-        return (User)  em.createQuery("Select u from "+getClassName()+" u where u.column="+column).getSingleResult();
+    public Movie getMovieByMovieName(String name) throws NoResultException, NonUniqueResultException {
+        return (Movie)  em.createQuery("Select u from "+getClassName()+" u where u.movie_name="+name).getSingleResult();
     }
+
+    @Override
+    public List<Movie> getTop10Movies() {
+        Query query = super.getEm().createQuery("select m from "+ getClassName()+ " m  ORDER BY m.movie_tickets DESC " );
+
+        List<Movie> movies= query.setMaxResults(10).getResultList();
+
+        return movies;
+    }
+
 
 }

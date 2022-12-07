@@ -13,8 +13,8 @@
 
 		<!-- Rolling Random Access File Appender with a default buffer of 256 * 1024 bytes -->
 		<RollingRandomAccessFile name="RollingRandomAccessFileAppender"
-								 fileName="logs/TelcoLogs"
-								 filePattern="logs/TelcoLogs-%d{yyyy-MM-dd}.zip">
+								 fileName="logs/finallogs"
+								 filePattern="logs/finallogs-%d{yyyy-MM-dd}.zip">
 			<PatternLayout>
 				<Pattern>${LOG_PATTERN}</Pattern>
 			</PatternLayout>
@@ -30,7 +30,7 @@
 	</Appenders>
 
 	<Loggers>
-		<AsyncLogger name="gr.codehub.telco.telcoproject" level="info" additivity="false">
+		<AsyncLogger name="com.example.finalassignment" level="info" additivity="false">
 			<AppenderRef ref="ConsoleAppender"/>
 			<AppenderRef ref="RollingRandomAccessFileAppender"/>
 		</AsyncLogger>

@@ -12,22 +12,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Cast {
+public class Movie {
 
     @Id
-    @Column(name="cast_id")
+    @Column(name="movie_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long castId;
+    private long movieId;
 
-    @Column(name="channel")
-    private String channel;
+    @Column(name="movie_name")
+    private String movie_name;
 
-    @Column(name="type")
-    private String type;
-
-    @Column(name="tickets")
-    private double tickets;
-
+    @Column(name="movie_tickets")
+    private double movie_tickets;
 
 
 }

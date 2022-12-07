@@ -1,9 +1,11 @@
-package gr.codehub.telco.telcoproject.repository;
+package com.example.finalassignment.repository;
 
 import java.util.List;
 
 public interface Repository<T, K> {
+
     //CR(U)D
+
     T create(T t);
     T read(K id);
     List<T> read();

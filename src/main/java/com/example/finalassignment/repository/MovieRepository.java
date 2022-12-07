@@ -1,9 +1,14 @@
 package com.example.finalassignment.repository;
 
-import com.example.finalassignment.model.User;
+import com.example.finalassignment.model.Movie;
 
-public interface UserRepository extends Repository<User, Long>{
+import java.util.List;
 
-    User getUserByColumn(int column);
+public interface MovieRepository extends Repository<Movie, Long>{
+
+    Movie getMovieByMovieName(String name);
+
+    List<Movie> getTop10Movies();
+
 
 }

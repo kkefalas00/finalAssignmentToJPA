@@ -1,4 +1,4 @@
-package gr.codehub.telco.telcoproject.configuration;
+package com.example.finalassignment.configuration;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

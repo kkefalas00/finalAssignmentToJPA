@@ -10,23 +10,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Movie")
-public class Movie {
+@Table(name="Cast")
+public class Cast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long movieId;
+    private long castId;
 
     @ManyToOne()
-    @JoinColumn(name = "cast_id")
-    private Cast cast;
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
+
+    @ManyToOne()
+    @JoinColumn(name = "tvserie_id")
+    private TvSerie tvSerie;
 
 
-    @Column(name="title_movie")
-    private String movieTitle;
+    @Column(name="type")
+    private String type;
 
-    @Column(name="tickets")
-    private double tickets;
 
 
 }

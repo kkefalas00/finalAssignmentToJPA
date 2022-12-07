@@ -1,9 +1,13 @@
-package gr.codehub.telco.telcoproject.repository.impl;
+package com.example.finalassignment.repository.impl;
 
+
+
+
+
+import com.example.finalassignment.repository.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import gr.codehub.telco.telcoproject.repository.Repository;
 
 import java.util.List;
 
@@ -22,10 +26,12 @@ public abstract class RepositoryImpl<T, K> implements Repository<T,K> {
     }
     @Override
     public T read(K id) {
+
         return em.find(getClassType(), id);
     }
     @Override
     public List<T> read() {
+
         return em.createQuery("select c from "+ getClassName()+" c").getResultList();
     }
 

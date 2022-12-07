@@ -1,45 +1,50 @@
 package com.example.finalassignment.service.impl;
 
-import com.example.finalassignment.model.User;
-import com.example.finalassignment.repository.UserRepository;
-import com.example.finalassignment.service.UserService;
+import com.example.finalassignment.model.Movie;
+import com.example.finalassignment.repository.MovieRepository;
+import com.example.finalassignment.service.MovieService;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
-public class UserServiceImpl implements UserService{
+public class MovieServiceImpl implements MovieService{
 
     @Inject
-    private UserRepository userRepository;
+    private MovieRepository movieRepository;
 
     @Override
-    public User create(User user) {
-        return userRepository.create(user);
+    public Movie create(Movie movie) {
+        return movieRepository.create(movie);
     }
 
     @Override
-    public User findById(long id) {
-        return userRepository.read(id);
+    public Movie findById(long id) {
+        return movieRepository.read(id);
     }
 
     @Override
-    public User findByColumn(int column) {
-        return userRepository.getUserByColumn(column);
+    public Movie findByMovieName(String name) {
+        return movieRepository.getMovieByMovieName(name);
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.read();
+    public List<Movie> findAll() {
+        return movieRepository.read();
     }
 
     @Override
-    public User update(User user) {
-        return userRepository.update(user);
+    public Movie update(Movie movie) {
+        return movieRepository.update(movie);
     }
 
     @Override
     public boolean delete(long columnId) {
-        return userRepository.delete(columnId);
+        return movieRepository.delete(columnId);
+    }
+
+    @Override
+    public List<Movie> getTheTop10MoviesByTickets() {
+        return movieRepository.getTop10Movies();
     }
 
 

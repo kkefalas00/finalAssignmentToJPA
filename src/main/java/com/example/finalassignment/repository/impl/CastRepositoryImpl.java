@@ -1,35 +1,42 @@
 package com.example.finalassignment.repository.impl;
 
-import com.example.finalassignment.model.Ticket;
-import com.example.finalassignment.repository.TicketRepository;
-import com.example.finalassignment.model.User;
+import com.example.finalassignment.model.Cast;
+import com.example.finalassignment.repository.CastRepository;
 import jakarta.persistence.Query;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class TicketRepositoryImpl extends RepositoryImpl<Ticket, Long> implements TicketRepository {
+public class CastRepositoryImpl extends RepositoryImpl<Cast, Long> implements CastRepository{
     @Override
-    public Class<Ticket> getClassType() {
-        return Ticket.class;
+    public Class<Cast> getClassType() {
+        return Cast.class;
     }
 
     @Override
     public String getClassName() {
-        return Ticket.class.getSimpleName();
+        return Cast.class.getSimpleName();
     }
 
-    public List<Ticket> getTicketsByUserId(Long columnId) {
-        Query query = super.getEm().createQuery("select t from "+ getClassName()+ " t WHERE t.customer IN (SELECT DISTINCT u.columnId FROM User u WHERE u.columnId IN (?1)) " );
+    public List<Cast> getMoviesByActors(Long id) {
+        Query query = super.getEm().createQuery("select c from "+ getClassName()+ " c WHERE c.movie IN (SELECT DISTINCT m.movieId FROM Movie m WHERE m.movieId IN (?1)) and c.type='Actor'" );
 
-        query.setParameter(1, columnId);
+        query.setParameter(1, id);
 
-        List<Ticket> tickets = query.getResultList();
+        List<Cast> listOfMoviesWithActors = query.getResultList();
 
-        return tickets;
+        return listOfMoviesWithActors;
     }
 
+    @Override
+    public List<Cast> getMoviesByDirectors(Long id) {
+        Query query = super.getEm().createQuery("select c from "+ getClassName()+ " c WHERE c.movie IN (SELECT DISTINCT m.movieId FROM Movie m WHERE m.movieId IN (?1)) and c.type='Director'" );
+
+        query.setParameter(1, id);
+
+        List<Cast> listOfMoviesWithdirectors = query.getResultList();
+
+        return listOfMoviesWithdirectors;
+    }
 
 
 }

@@ -1,20 +1,19 @@
 package com.example.finalassignment.service;
 
-import com.example.finalassignment.model.Ticket;
+import com.example.finalassignment.model.Cast;
 import jakarta.transaction.Transactional;
-import java.time.LocalDate;
+
 import java.util.List;
 
 @Transactional
-public interface TicketService {
-    Ticket create(Ticket ticket);
-    List<Ticket> findAll();
-    Ticket findByTicketId(Long column1Id);
-    Ticket update(Ticket ticket);
-    boolean delete(Long column1Id);
-    List<Ticket> getTicketsByUserId(Long column1Id);
-//    List<Ticket> findByDate(LocalDate date);
-//    List<Ticket> findByDateRange(LocalDate dateFrom, LocalDate dateTo);
+public interface CastService {
+    Cast create(Cast cast);
+    List<Cast> findAll();
+    Cast findByTicketId(Long id);
+    Cast update(Cast cast);
+    boolean delete(Long id);
+    List<Cast> getMoviesByActors(Long id);
+    List<Cast> getMoviesByDirectors(Long id);
 
 
 }

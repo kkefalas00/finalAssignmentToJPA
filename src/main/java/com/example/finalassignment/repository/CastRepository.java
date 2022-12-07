@@ -1,7 +1,11 @@
 package com.example.finalassignment.repository;
 
-import com.example.finalassignment.model.Ticket;
+import com.example.finalassignment.model.Cast;
 
-public interface TicketRepository extends Repository<Ticket, Long> {
+import java.util.List;
 
+public interface CastRepository extends Repository<Cast, Long> {
+
+    List<Cast> getMoviesByActors(Long id);
+    List<Cast> getMoviesByDirectors(Long id);
 }
